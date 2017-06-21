@@ -1,0 +1,58 @@
+\usepackage{
+    algorithm,algorithmic,amsfonts,amsmath,amssymb,bm,booktabs,color,
+    enumerate,graphicx,hyperref,microtype,multicol,natbib,nicefrac,url
+}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\newcommand{\todo}[1]{\noindent\textbf{\textcolor{red}{(TODO) #1\\}}}
+
+\newcommand{\MDP}{M}
+\newcommand{\States}{\mathcal{S}}
+\newcommand{\Actions}{\mathcal{A}}
+\newcommand{\cost}{C}
+\newcommand{\initstatedist}{\rho}
+\newcommand{\discount}{\gamma}
+\newcommand{\numsamp}{N}
+\newcommand{\horizon}{T}
+\newcommand{\dynamics}{p}
+\newcommand{\policyparams}{\theta}
+\newcommand{\policy}{\pi}
+\newcommand{\state}{\mathbf{s}}
+\renewcommand{\action}{\mathbf{a}}
+\newcommand{\costsample}{c}
+\newcommand{\policyobj}{\eta}
+\newcommand{\dynmodel}{\hat{\dynamics}}
+\newcommand{\costmodel}{\hat{\cost}}
+\newcommand{\isdmodel}{\hat{\rho}}
+\newcommand{\dynmat}{\mathbf{F}}
+\newcommand{\dyncovar}{\Sigma}
+\newcommand{\costmat}{\mathbf{C}}
+\newcommand{\costvec}{\mathbf{c}}
+\newcommand{\K}{\mathbf{K}}
+\renewcommand{\k}{\mathbf{k}}
+\newcommand{\polcovar}{\mathbf{S}}
+\newcommand{\latent}{\mathbf{x}}
+\newcommand{\traj}{\tau}
+\newcommand{\polstepsize}{\epsilon_p}
+\newcommand{\modelstepsize}{\epsilon_m}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\W}{\mathcal{W}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\KL}{\text{KL}}
+\newcommand{\model}{\mathcal{M}}
+\newcommand{\dataset}{\mathcal{D}}
+\DeclareMathOperator*{\argmin}{argmin}
+\DeclareMathOperator*{\argmax}{argmax}
+\newcommand{\colvec}[2][.67]{%
+  \scalebox{#1}{%
+    \renewcommand{\arraystretch}{.67}%
+    $\begin{bmatrix}#2\end{bmatrix}$%
+  }
+}
+\newcommand{\trajectory}{\left[\state_0,\action_0,\ldots,\state_\horizon,\action_\horizon,\state_{\horizon + 1}\right]}
+\newcommand{\costtrajectory}{\left[\state_0,\action_0,\costsample_0\ldots,\state_\horizon,\action_\horizon,\costsample_\horizon,\state_{\horizon + 1}\right]}
+\newcommand{\latenttrajectory}{\left[\latent_0,\action_0,\ldots,\latent_\horizon,\action_\horizon,\latent_{\horizon + 1}\right]}
