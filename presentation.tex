@@ -286,7 +286,7 @@
 											&= \int\prod_i q(\mathbf{H}_i) \left(\log p(\mathbf{H}, \mathbf{V}) - \log \prod_i q(\mathbf{H}_i)\right)d\mathbf{H}\\
 											&= \int q(\mathbf{H}_j) \left(\int \log p(\mathbf{H}, \mathbf{V})\prod_{i \neq j}q(\mathbf{H}_i)d\mathbf{H}_i \right)d\mathbf{H}_j \\&- \int q(\mathbf{H}_j)\log q(\mathbf{H}_j)d \mathbf{H}_j + \textrm{const.}\\
 											&= \int q(\mathbf{H}_j)\log \tilde{q}(\mathbf{H}_j, \mathbf{V})d \mathbf{H}_j- \int q(\mathbf{H}_j)\log q(\mathbf{H}_j)d \mathbf{H}_j  + \textrm{const.} \\
-											&= \KL(q(\mathbf{H}_j)\|\tilde{q}(\mathbf{H}_j, \mathbf{V}))  + \textrm{const.}
+											&= -\KL(q(\mathbf{H}_j)\|\tilde{q}(\mathbf{H}_j, \mathbf{V}))  + \textrm{const.}
 	\end{align*}
 	where 
 	\begin{align*}
