@@ -10,13 +10,15 @@
   \node[main] (pi) [] { $\bm{\pi}$ };
   \node[main] (z) [below=of pi] { $z_i$ };
   \node[main] (theta) [right=of z] { $\bm{\mu}, \bm{\Sigma}$ };
-  \node[main, fill = black!10] (f) [below=of z] { $x_{i}$ };
+  \node[main] (x) [below=of z] { $x_{i}$ };
+  \node[main, fill = black!10] (y) [below=of x] { $y_{i}$ };
   \path (pi) edge [connect] (z)
-        (z) edge [connect] (f)
-        (theta) edge [connect] (f);
+        (z) edge [connect] (x)
+        (theta) edge [connect] (x)
+        (x) edge [connect] (y);
   %\node[rectangle, inner sep=0mm, fit= (f),label=below right:D, xshift=-1mm, yshift=1mm] {};
   %\node[rectangle, inner sep=4.4mm,draw=black!100, fit= (f)] {};
-  \node[rectangle, inner sep=4.6mm, fit= (z) (f),label=below right:N, xshift=-1mm, yshift=-12mm] {};
-  \node[rectangle, inner sep=9mm, draw=black!100, fit = (z) (f)] {};
+  \node[rectangle, inner sep=4.6mm, fit= (z) (y),label=below right:N, xshift=-1mm, yshift=-12mm] {};
+  \node[rectangle, inner sep=9mm, draw=black!100, fit = (z) (y)] {};
 \end{tikzpicture}
 \end{document}

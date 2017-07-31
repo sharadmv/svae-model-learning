@@ -398,3 +398,33 @@
     booktitle={ICLR},
     year={2017},
 }
+@article{blackbox,
+abstract = {Variational inference has become a widely used method to approximate posteriors in complex latent variables models. However, deriving a variational inference algorithm generally requires significant model-specific analysis, and these efforts can hinder and deter us from quickly developing and exploring a variety of models for a problem at hand. In this paper, we present a "black box" variational inference algorithm, one that can be quickly applied to many models with little additional derivation. Our method is based on a stochastic optimization of the variational objective where the noisy gradient is computed from Monte Carlo samples from the variational distribution. We develop a number of methods to reduce the variance of the gradient, always maintaining the criterion that we want to avoid difficult model-based derivations. We evaluate our method against the corresponding black box sampling based methods. We find that our method reaches better predictive likelihoods much faster than sampling methods. Finally, we demonstrate that Black Box Variational Inference lets us easily explore a wide space of models by quickly constructing and evaluating several models of longitudinal healthcare data.},
+archivePrefix = {arXiv},
+arxivId = {1401.0118},
+author = {Ranganath, Rajesh and Gerrish, Sean and Blei, David M.},
+eprint = {1401.0118},
+file = {:home/sharad/Documents/Mendeley Desktop/Ranganath, Gerrish, Blei - 2013 - Black Box Variational Inference.pdf:pdf},
+month = {dec},
+title = {{Black Box Variational Inference}},
+url = {http://arxiv.org/abs/1401.0118},
+year = {2013}
+}
+@article{vae,
+abstract = {How can we perform efficient inference and learning in directed probabilistic models, in the presence of continuous latent variables with intractable posterior distributions, and large datasets? We introduce a stochastic variational inference and learning algorithm that scales to large datasets and, under some mild differentiability conditions, even works in the intractable case. Our contributions is two-fold. First, we show that a reparameterization of the variational lower bound yields a lower bound estimator that can be straightforwardly optimized using standard stochastic gradient methods. Second, we show that for i.i.d. datasets with continuous latent variables per datapoint, posterior inference can be made especially efficient by fitting an approximate inference model (also called a recognition model) to the intractable posterior using the proposed lower bound estimator. Theoretical advantages are reflected in experimental results.},
+archivePrefix = {arXiv},
+arxivId = {1312.6114},
+author = {Kingma, Diederik P and Welling, Max},
+doi = {10.1051/0004-6361/201527329},
+eprint = {1312.6114},
+file = {:home/sharad/Documents/Mendeley Desktop/Kingma, Welling - 2013 - Auto-Encoding Variational Bayes.pdf:pdf},
+isbn = {1312.6114v10},
+issn = {1312.6114v10},
+mendeley-groups = {ICML 2016},
+month = {dec},
+pmid = {23459267},
+title = {{Auto-Encoding Variational Bayes}},
+url = {http://arxiv.org/abs/1312.6114},
+year = {2013}
+}
+
