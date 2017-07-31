@@ -15,7 +15,7 @@
 
 %\usemintedstyle{trac}
 
-\title{An introduction to the structured variational autoencoders (SVAE)}
+\title{An introduction to the structured variational autoencoder (SVAE)}
 \subtitle{}
 \date{\today}
 \author{Sharad Vikram}
@@ -306,7 +306,7 @@
   can be calculated in closed form!
   \pause
 
-  This gives rise to an efficient coordinate-ascent algorithm
+  This gives rise to an efficient coordinate-ascent algorithm called variational message passing \cite{vmp} (VMP)
   that can be extended with natural gradients (stochastic variational inference).
 
 \end{frame}
@@ -314,56 +314,56 @@
 \begin{frame}{Variational message passing}
 
   An update for node $j$ relies on only its Markov blanket.
-	\begin{center}
-		\includegraphics<1>[width=0.5\textwidth]{img/vmp-1}
-		\includegraphics<2>[width=0.5\textwidth]{img/vmp-2}
-		\includegraphics<3>[width=0.5\textwidth]{img/vmp-3}
-		\includegraphics<4>[width=0.5\textwidth]{img/vmp-4}
-	\end{center}
+  \begin{center}
+    \includegraphics<1>[width=0.5\textwidth]{img/vmp-1}
+    \includegraphics<2>[width=0.5\textwidth]{img/vmp-2}
+    \includegraphics<3>[width=0.5\textwidth]{img/vmp-3}
+    \includegraphics<4>[width=0.5\textwidth]{img/vmp-4}
+  \end{center}
 
 \end{frame}
 
 \begin{frame}{Messages}
-	Remember that $\eta_j$ is the natural parameter of the distribution $q(\mathbf{H}_j)$.
-	\pause
-	The message from a parent $Y$ to a child $X$ is
-	\begin{align*}
-		m_{Y \rightarrow X} = f(\eta_Y)
-	\end{align*}
-		\pause
-	The message from a child $X$ to a parent $Y$ is
-	\begin{align*}
-		m_{X \rightarrow Y} = g(\eta_X, \{m_{i \rightarrow X}\}_{i \in \textrm{cp}_Y})
-	\end{align*}
+  Let $\eta_j$ is the natural parameter of the distribution $q(\mathbf{H}_j)$.
+  \pause
+  The message from a parent $Y$ to a child $X$ is
+  \begin{align*}
+    m_{Y \rightarrow X} = f(\eta_Y)
+  \end{align*}
+    \pause
+  The message from a child $X$ to a parent $Y$ is
+  \begin{align*}
+    m_{X \rightarrow Y} = g(\eta_X, \{m_{i \rightarrow X}\}_{i \in \textrm{cp}_Y})
+  \end{align*}
 
-	\pause
-	In conjugate-exponential PGMs, messages can be computed in closed-form.
+  \pause
+  In conjugate-exponential PGMs, messages can be computed in closed-form.
 \end{frame}
 
 \begin{frame}{Summary of VMP}
-	\textbf{Setup:} Conjugate-exponential graphical model
+  \textbf{Setup:} Conjugate-exponential graphical model
 
-	\pause
-	\textbf{Problem:} Compute posterior $p(\mathbf{H} | \mathbf{V})$, approximated with $q(\mathbf{H}) = \prod_j q(\mathbf{H}_j)$
+  \pause
+  \textbf{Problem:} Compute posterior $p(\mathbf{H} | \mathbf{V})$, approximated with $q(\mathbf{H}) = \prod_j q(\mathbf{H}_j)$
 
-	\pause
-	\textbf{Solution:} Until converged, for each hidden node $\mathbf{H}_j$:
-	\begin{enumerate}
-			\pause
-		\item Collect messages from children and parents
-			\pause
-		\item Compute updated distribution parameters from messages
-	\end{enumerate}
+  \pause
+  \textbf{Solution:} Until converged, for each hidden node $\mathbf{H}_j$:
+  \begin{enumerate}
+      \pause
+    \item Collect messages from children and parents
+      \pause
+    \item Compute updated distribution parameters from messages
+  \end{enumerate}
 
-	\pause
-	\textbf{Benefits:} efficient, simple, can incorporate mini-batches (stochastic variational inference)
+  \pause
+  \textbf{Benefits:} efficient, simple, can incorporate mini-batches (stochastic variational inference)
 
-	\pause
-	\textbf{Drawbacks:} can be underexpressive (conjugate-exponential requirement)
+  \pause
+  \textbf{Drawbacks:} can be underexpressive (conjugate-exponential requirement)
 \end{frame}
 
 \begin{frame}[standout]
-Demo
+  Demo
 \end{frame}
 
 \subsection{Gradient-based variational inference}
@@ -395,13 +395,13 @@ Demo
 \begin{frame}{Gradient-based approaches}
   \begin{enumerate}
     \item Start with Monte-Carlo loss
-    \begin{align*}
-      \hat{\L}[q(\theta, z)] &= \frac{1}{S}\sum_{s = 1}^S {q(\theta^{(s)}, z^{(s)})}\left[\log\frac{p(x, \theta^{(s)}, z^{(s)})}{q(\theta^{(s)}, z^{(s)})}\right]
-    \end{align*}
+      \begin{align*}
+        \hat{\L}[q(\theta, z)] &= \frac{1}{S}\sum_{s = 1}^S {q(\theta^{(s)}, z^{(s)})}\left[\log\frac{p(x, \theta^{(s)}, z^{(s)})}{q(\theta^{(s)}, z^{(s)})}\right]
+      \end{align*}
     \item Compute gradient
-    \begin{align*}
-      \nabla_{\phi}\hat{\L}[q_\phi(\theta, z)] &= \frac{1}{S}\sum_{s = 1}^S \nabla_\phi{q(\theta^{(s)}, z^{(s)})}\left[\log\frac{p(x, \theta^{(s)}, z^{(s)})}{q(\theta^{(s)}, z^{(s)})}\right]
-    \end{align*}
+      \begin{align*}
+        \nabla_{\phi}\hat{\L}[q_\phi(\theta, z)] &= \frac{1}{S}\sum_{s = 1}^S \nabla_\phi{q(\theta^{(s)}, z^{(s)})}\left[\log\frac{p(x, \theta^{(s)}, z^{(s)})}{q(\theta^{(s)}, z^{(s)})}\right]
+      \end{align*}
     \item Perform gradient ascent
   \end{enumerate}
 \end{frame}
@@ -432,7 +432,7 @@ Demo
   \centering
   \includestandalone[width=0.1\textwidth]{tikz/vae}
   \pause
-   
+
   How do we do inference?
 \end{frame}
 
@@ -479,11 +479,11 @@ Demo
   \metroset{block=fill}
   \begin{block}{Example: sampling from a univariate Gaussian $q_\phi(z | x)$}
     \begin{itemize}
-  \pause
+        \pause
       \item Compute $(\mu, \sigma^2) = r(x)$
-  \pause
+        \pause
       \item Sample $\epsilon \sim N(0, 1))$
-  \pause
+        \pause
       \item Return $z = \mu + \epsilon\sigma$
     \end{itemize}
   \end{block}
