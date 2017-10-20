@@ -1,0 +1,15 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usepackage{bm}
+\usetikzlibrary{fit,positioning}
+\begin{document}
+\begin{tikzpicture}
+\tikzstyle{main}=[circle, minimum size = 10mm, thick, draw =black!80, node distance = 16mm] \tikzstyle{connect}=[-latex, thick]
+\tikzstyle{box}=[rectangle, draw=black!100]
+  \node[main] (z) { $z_i$ };
+  \node[main, fill = black!10] (x) [below=of z] { $x_{i}$ };
+  \path (z) edge [connect] (x);
+  %\node[rectangle, inner sep=0mm, fit= (f),label=below right:D, xshift=-1mm, yshift=1mm] {};
+  %\node[rectangle, inner sep=4.4mm,draw=black!100, fit= (f)] {};
+\end{tikzpicture}
+\end{document}

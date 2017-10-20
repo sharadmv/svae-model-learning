@@ -1,0 +1,70 @@
+
+%\subsection{Reinforcement Learning}
+
+%\begin{frame}{What is reinforcement learning?}
+%\only<1->{Simply put, reinforcement learning (RL) is used to solve a task from rewards or costs.}
+%\begin{itemize}
+%\item<2-> \textbf{Setup:} Consider an agent in an environment that acts over time ($t = 1,2,\ldots, T$)
+%\begin{enumerate}
+%\item<3-> Currently at state $s_t$
+%\item<4-> Decide on an action $a_t = \pi(s_t)$
+%\item<5-> Receive cost $c_t$
+%\item<6-> Assigned next state $s_{t + 1}$
+%\end{enumerate}
+%\begin{center}
+%\includegraphics<3>[width=0.2\textwidth]{img/agent-1.png}
+%\includegraphics<4>[width=0.2\textwidth]{img/agent-2.png}
+%\includegraphics<5>[width=0.2\textwidth]{img/agent-3.png}
+%\includegraphics<6->[width=0.2\textwidth]{img/agent-4.png}
+%\end{center}
+%\item<7-> \textbf{Goal:} Learn a policy function $\pi(s)$
+%that minimizes
+%\begin{align*}
+%\sum_{t = 1}^T c_t
+%\end{align*}
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Model-free reinforcement learning}
+%In model-free RL, we learn a policy by directly optimizing the objective
+%\begin{align*}
+%\pi_\theta^*(s) = \argmin_\theta \sum_{t = 1}^T c_t.
+%\end{align*}
+%\pause
+%\begin{center}
+%\includegraphics<1->[width=0.3\textwidth]{img/model-free.png}
+%\end{center}
+%Examples of model-free algorithms include:
+%\begin{itemize}
+%\item Q-learning
+%\item Trust-region policy optimization
+%\item Generalized advantage estimation
+%\end{itemize}
+%\end{frame}
+
+%\begin{frame}{Model-free vs. model-based RL}
+%%Do we explicitly want to model how the environment behaves?
+
+%An environment can be broken down into two independent components:
+%\pause
+%\begin{itemize}
+%\item \textbf{Dynamics function}: $\state_{t + 1} \sim p(s_{t + 1}| s_t, a_t)$
+%\pause
+%\item \textbf{Cost function}: $c_t = C(s_t, a_t)$
+%\end{itemize}
+%\pause
+%\metroset{block=fill}
+%\begin{block}{Model-free}
+%Learn a black-box policy $\pi_\theta(s_t)$ by directly optimizing $\sum_{t = 1}^T c_t$
+%\end{block}
+%\pause
+%\metroset{block=fill}
+%\begin{block}{Model-based}
+%Learn a model of the environment ($\dynmodel(\state_{t+1}|\state_t,\action_t)$,  $\costmodel(\state_t,\action_t)$).
+%Then, learn a policy $\pi_\theta(s_t)$ with model-predictive control (MPC).
+%\end{block}
+%%\begin{center}
+%%\includegraphics<1->[width=0.5\textwidth]{img/model-free.png}
+%%\includegraphics<2->[width=0.5\textwidth]{img/model-based.png}
+%%\end{center}
+%\end{frame}
